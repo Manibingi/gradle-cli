@@ -81,7 +81,7 @@ class OrdersDataIT {
 
     @Test
     void flywaySeedsReferenceDataButNoOrders_fail() {
-        assertEquals(5, repository.referenceStatusCount());
+        assertEquals(6, repository.referenceStatusCount());
 
         assertEquals(0, repository.count());
     }
