@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OrdersDataIT {
 
-    private static final String URL = System.getProperty("db.url", "jdbc:mysql://localhost:3306/retail_test");
+    private static final String URL = System.getProperty("db.url", "jdbc:mysql://127.0.0.1:3306/retail_test");
     private static final String USER = System.getProperty("db.user", "root");
     private static final String PASSWORD = System.getProperty("db.password", "mani6264");
 
