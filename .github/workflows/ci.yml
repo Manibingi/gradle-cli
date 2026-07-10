@@ -57,6 +57,14 @@ jobs:
           mkdir -p build/allure-results
           cp src/test/resources/categories.json build/allure-results/categories.json
 
+      - name: Get Allure history
+        if: always()
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
       - name: Generate Allure Report
         if: always()
         uses: simple-elf/allure-report-action@master
