@@ -8,5 +8,10 @@
     "name": "Database Failures",
     "matchedStatuses": ["broken"],
     "traceRegex": ".*SQLException.*"
+  },
+  {
+    "name": "Refund Logic Failures",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*REFUNDED.*"
   }
 ]

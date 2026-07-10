@@ -85,4 +85,9 @@ class OrdersDataIT {
 
         assertEquals(0, repository.count());
     }
+
+    @Test
+    void refundFailure() {
+        assertEquals(2, repository.countByStatus("REFUNDED"));
+    }
 }
