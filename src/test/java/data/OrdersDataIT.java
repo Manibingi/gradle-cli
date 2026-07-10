@@ -12,7 +12,7 @@ class OrdersDataIT {
 
     private static final String URL = System.getProperty("db.url", "jdbc:mysql://localhost:3306/retail_test");
     private static final String USER = System.getProperty("db.user", "root");
-    private static final String PASSWORD = System.getProperty("db.password", "root");
+    private static final String PASSWORD = System.getProperty("db.password", "mani6264");
 
 //    private static final String URL = "jdbc:mysql://localhost:3306/retail_test?useSSL=false&allowPublicKeyRetrieval=true";
 //    private static final String USER = "root";
