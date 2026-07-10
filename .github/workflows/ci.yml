@@ -1,0 +1,90 @@
+name: MySQL Builder Tests
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: retail_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=20
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 22
+          cache: gradle
+
+      - name: Make Gradle Executable
+        run: chmod +x gradlew
+
+      - name: Run Tests
+        run: ./gradlew clean test
+        env:
+          ORG_GRADLE_PROJECT_dbUrl: jdbc:mysql://localhost:3306/retail_test
+          ORG_GRADLE_PROJECT_dbUser: root
+          ORG_GRADLE_PROJECT_dbPassword: root
+
+      - name: Copy Categories
+        if: always()
+        run: |
+          mkdir -p build/allure-results
+          cp src/test/resources/categories.json build/allure-results/categories.json
+
+      - name: Get Allure History
+        if: always()
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Generate Allure Report
+        if: always()
+        uses: simple-elf/allure-report-action@master
+        with:
+          gh_pages: gh-pages
+          allure_results: build/allure-results
+          allure_history: allure-history
+          keep_reports: 20
+
+      - name: Deploy Allure Report
+        if: always()
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
+
+      - name: Report Link
+        if: always()
+        run: |
+          echo "MySQL Builder Tests completed."
+          echo "Allure Report:"
+          echo "https://chaithra-03.github.io/gradle-ci/"

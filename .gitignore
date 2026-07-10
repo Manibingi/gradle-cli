@@ -1,0 +1,38 @@
+
+ 
+# VS Code
+.vscode/
+ 
+# macOS
+.DS_Store
+ 
+# Windows
+Thumbs.db
+Desktop.ini
+ 
+# Logs
+*.log
+ 
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+ 
+# Test reports
+test-output/
+reports/
+allure-results/
+allure-report/
+ 
+# Environment files
+.env
+.env.*
+ 
+# Java
+*.class
+ 
+# OS-generated files
+*.pid
+*.seed
+ 
