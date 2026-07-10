@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2","invalidBuilderDataFailsBeforeDatabaseSetup()","","2026-07-10","passed","2026-07-10","","data.BuilderStructureTest","data.BuilderStructureTest","invalidBuilderDataFailsBeforeDatabaseSetup"
+"","1","builderStatesOnlyWhatTestCaresAbout()","","2026-07-10","passed","2026-07-10","","data.BuilderStructureTest","data.BuilderStructureTest","builderStatesOnlyWhatTestCaresAbout"
+"","0","OrdersDataIT","","2026-07-10","broken","2026-07-10","","data.OrdersDataIT","data.OrdersDataIT",""
+"","8","refundedBuilderCreatesRefundedOrder_fail()","","2026-07-10","failed","2026-07-10","","data.BuilderStructureTest","data.BuilderStructureTest","refundedBuilderCreatesRefundedOrder_fail"
+"","32","builderUsesSensibleDefaults()","","2026-07-10","passed","2026-07-10","","data.BuilderStructureTest","data.BuilderStructureTest","builderUsesSensibleDefaults"
+"","1","refundedBuilderCreatesRefundedOrder()","","2026-07-10","passed","2026-07-10","","data.BuilderStructureTest","data.BuilderStructureTest","refundedBuilderCreatesRefundedOrder"
