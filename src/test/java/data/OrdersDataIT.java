@@ -1,5 +1,6 @@
 package data;
 
+import io.qameta.allure.Allure;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +23,7 @@ class OrdersDataIT {
 
     @BeforeAll
     static void migrateSchema() {
+        Allure.step("Migrating schema");
 
         Flyway.configure()
                 .dataSource(URL, USER, PASSWORD)
@@ -40,6 +42,7 @@ class OrdersDataIT {
 
     @Test
     void flywaySeedsReferenceDataButNoOrders() {
+        Allure.step("Reference data but no orders");
         assertEquals(4, repository.referenceStatusCount());
         assertEquals(0, repository.count());
     }
@@ -58,6 +61,7 @@ class OrdersDataIT {
 
     @Test
     void countsOnlyThisTestsOrders() {
+        Allure.step("counts the orders quantity");
 
         factory.persisted(anOrder());
         factory.persisted(
